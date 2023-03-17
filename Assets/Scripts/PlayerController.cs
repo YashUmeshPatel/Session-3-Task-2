@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -10,14 +11,17 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject player;
 
-    [SerializeField] GameObject test1;
-    [SerializeField] GameObject test2;
+    [SerializeField] GameObject projectilePrefab;
 
     [SerializeField] private float movementSpeed;
 
-    Vector2 PressPoint;
-    Quaternion StartRotaion;
-    float SceneWidth;
+    public FixedJoystick fixedJoystick;
+
+    Vector2 pressPoint;
+    Quaternion startRotation;
+    
+    float sceneWidth;
+    bool flag = false;
 
     Vector2 direction;
 
@@ -28,71 +32,97 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        SceneWidth = Screen.width;
+        sceneWidth = Screen.width;
+    }
+
+    private void Update()
+    {       
+        player.transform.Translate(direction * Time.deltaTime * movementSpeed, Camera.main.transform);
+        PlayerMovementJoyStick();
     }
 
     private void OnEnable()
     {
-        playerInput.PlayerController.Movement.Enable();
-        //playerInput.PlayerController.Rotation.Enable();
-        playerInput.PlayerController.Testing.Enable();
+        playerInput.PlayerController.Enable();
 
-        //playerInput.PlayerController.Movement.started += movePlayer;
+        playerInput.PlayerController.Shoot.started += CreatingBullet;
+
         playerInput.PlayerController.Movement.performed += movePlayer;
         playerInput.PlayerController.Movement.canceled += movePlayer;
 
-        //playerInput.PlayerController.Rotation.performed += rotatePlayer;
+        playerInput.PlayerController.Rotate.started += rotatePlayer;
+        playerInput.PlayerController.Rotate.performed += rotatePlayer;
 
-        playerInput.PlayerController.Testing.performed += Test;
-        
-    }
-
-    private void Test(InputAction.CallbackContext context)
-    {
-        //playerInput.PlayerController.Testing.
+        playerInput.PlayerController.RotateTouch.started += rotatePlayer;
+        playerInput.PlayerController.RotateTouch.performed += rotatePlayer;
     }
 
     private void OnDisable()
     {
-        playerInput.PlayerController.Movement.Disable();
-        playerInput.PlayerController.Rotation.Disable();
+        playerInput.PlayerController.Disable();
+
+        playerInput.PlayerController.Shoot.started -= CreatingBullet;
+
+        playerInput.PlayerController.Movement.performed -= movePlayer;
+        playerInput.PlayerController.Movement.canceled -= movePlayer;
+
+        playerInput.PlayerController.Rotate.started -= rotatePlayer;
+        playerInput.PlayerController.Rotate.performed -= rotatePlayer;
+
+        playerInput.PlayerController.RotateTouch.started -= rotatePlayer;
+        playerInput.PlayerController.RotateTouch.performed -= rotatePlayer;
     }
 
     void movePlayer(InputAction.CallbackContext context)
     {        
         direction = playerInput.PlayerController.Movement.ReadValue<Vector2>();
 
-        Debug.Log(direction);
-        
-    }
-
-    
-
-    void Testing()
-    {
-        //test1.transform.rotation = Quaternion.Euler(Vector3.forward * Time.deltaTime * movementSpeed);
-        test1.transform.Rotate(Vector3.forward * movementSpeed * Time.deltaTime);
-        test2.transform.Rotate(Vector3.forward * movementSpeed * Time.deltaTime);
+        Debug.Log(direction);       
     }
 
     void rotatePlayer(InputAction.CallbackContext context)
     {
-        if (playerInput.PlayerController.Rotation.IsPressed() == true)
-        {            
-            PressPoint = Mouse.current.position.ReadValue();
-            StartRotaion = player.transform.rotation;
-        }
-
-        else if (Input.GetMouseButton(0))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            float Difference = (Mouse.current.position.ReadValue() - PressPoint).x;
-            player.transform.rotation = StartRotaion * Quaternion.Euler(Vector3.forward * (Difference / SceneWidth) * -360);
+            if (context.phase == InputActionPhase.Started)
+            {
+                pressPoint = context.ReadValue<Vector2>();
+                startRotation = player.transform.rotation;
+            }
+            else if (context.phase == InputActionPhase.Performed && flag == false)
+            {
+                float Difference = (context.ReadValue<Vector2>() - pressPoint).x;
+                player.transform.rotation = startRotation * Quaternion.Euler(Vector3.forward * (Difference / sceneWidth) * -360);
+
+                Debug.Log("MainDifference " + Difference);
+                Debug.Log("MainRotation " + startRotation * Quaternion.Euler(Vector3.forward * (Difference / sceneWidth) * -360));
+            }
         }
     }
 
-    private void Update()
+    void PlayerMovementJoyStick()
     {
-        player.transform.Translate(direction * movementSpeed * Time.deltaTime);
-        Testing();
+        if (fixedJoystick.Vertical != 0 && fixedJoystick.Horizontal != 0)
+        {
+            flag = true;
+            float verticalDirection = fixedJoystick.Vertical;
+            float horizontalDirection = fixedJoystick.Horizontal;
+
+            Vector2 direction = new Vector2(horizontalDirection, verticalDirection);
+
+            player.transform.Translate(direction * Time.deltaTime * movementSpeed);
+        }
+        else
+            flag = false;
+    }
+
+    public void CreatingBullet(InputAction.CallbackContext context)
+    {
+        Instantiate(projectilePrefab, player.transform.position, player.transform.rotation);
+    }
+
+    public void CreatingBulletButton()
+    {
+        Instantiate(projectilePrefab, player.transform.position, player.transform.rotation);
     }
 }

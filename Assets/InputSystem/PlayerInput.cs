@@ -31,28 +31,37 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
                     ""id"": ""fc6ab796-a6df-4577-9dcc-dcb21a600222"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Rotation"",
+                    ""name"": ""Rotate"",
                     ""type"": ""Value"",
-                    ""id"": ""979aec7a-4190-476d-a835-62718adf4103"",
-                    ""expectedControlType"": ""Axis"",
+                    ""id"": ""0243b19e-8541-49e4-98e0-6380a545cc30"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Testing"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
-                    ""id"": ""dc6cafb1-8687-4b6f-a1d7-98f1c2395a95"",
+                    ""id"": ""e95365d4-a352-4a25-854e-7294ff8fc441"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateTouch"",
+                    ""type"": ""Value"",
+                    ""id"": ""31fd79d0-c388-479c-bc48-2e04094bde71"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -73,7 +82,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -84,7 +93,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -95,7 +104,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -106,7 +115,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -117,7 +126,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -128,7 +137,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -139,7 +148,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -150,63 +159,85 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
+                    ""groups"": ""MyControls"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""905a62c6-3c8e-48e6-bd20-31875ddb5a20"",
-                    ""path"": ""<Mouse>/delta/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""NewPlayer"",
-                    ""action"": ""Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Two Modifiers"",
-                    ""id"": ""8142c2e3-cd9e-46cc-ae7a-9d2f1a1950c3"",
-                    ""path"": ""TwoModifiers"",
+                    ""name"": ""One Modifier"",
+                    ""id"": ""0f796d6b-c850-40d0-aaec-4009d1433559"",
+                    ""path"": ""OneModifier"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Testing"",
+                    ""action"": ""Rotate"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier1"",
-                    ""id"": ""e6212f35-a4fe-4dc6-9a45-b750a8e26345"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""name"": ""modifier"",
+                    ""id"": ""d2d66401-bcb4-4ed6-8f5c-ee70c940195a"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
-                    ""action"": ""Testing"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""modifier2"",
-                    ""id"": ""46d04420-ae57-4360-b95f-153c919af12b"",
-                    ""path"": ""<Keyboard>/alt"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""NewPlayer"",
-                    ""action"": ""Testing"",
+                    ""groups"": ""MyControls"",
+                    ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""binding"",
-                    ""id"": ""75f2fbc6-d1f4-44a4-b946-46109b4191a5"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""29584fee-584f-4c00-9dc4-cce55776b36e"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""NewPlayer"",
-                    ""action"": ""Testing"",
+                    ""groups"": ""MyControls"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6d2593e-782a-4713-8ac4-c4babf49eb2e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MyControls"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""6147d687-3289-457c-99be-9ce284396154"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateTouch"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""3447e2ff-8c23-4fb2-9ed8-df8fca73b8e8"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MyControls"",
+                    ""action"": ""RotateTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""84e92d55-a4e2-4c21-8e5f-45891c7daec6"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MyControls"",
+                    ""action"": ""RotateTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -215,8 +246,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""NewPlayer"",
-            ""bindingGroup"": ""NewPlayer"",
+            ""name"": ""MyControls"",
+            ""bindingGroup"": ""MyControls"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
@@ -227,6 +258,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""devicePath"": ""<Mouse>"",
                     ""isOptional"": false,
                     ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Joystick>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
                 }
             ]
         }
@@ -235,8 +276,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // PlayerController
         m_PlayerController = asset.FindActionMap("PlayerController", throwIfNotFound: true);
         m_PlayerController_Movement = m_PlayerController.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerController_Rotation = m_PlayerController.FindAction("Rotation", throwIfNotFound: true);
-        m_PlayerController_Testing = m_PlayerController.FindAction("Testing", throwIfNotFound: true);
+        m_PlayerController_Rotate = m_PlayerController.FindAction("Rotate", throwIfNotFound: true);
+        m_PlayerController_Shoot = m_PlayerController.FindAction("Shoot", throwIfNotFound: true);
+        m_PlayerController_RotateTouch = m_PlayerController.FindAction("RotateTouch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -299,15 +341,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerController;
     private List<IPlayerControllerActions> m_PlayerControllerActionsCallbackInterfaces = new List<IPlayerControllerActions>();
     private readonly InputAction m_PlayerController_Movement;
-    private readonly InputAction m_PlayerController_Rotation;
-    private readonly InputAction m_PlayerController_Testing;
+    private readonly InputAction m_PlayerController_Rotate;
+    private readonly InputAction m_PlayerController_Shoot;
+    private readonly InputAction m_PlayerController_RotateTouch;
     public struct PlayerControllerActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerControllerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerController_Movement;
-        public InputAction @Rotation => m_Wrapper.m_PlayerController_Rotation;
-        public InputAction @Testing => m_Wrapper.m_PlayerController_Testing;
+        public InputAction @Rotate => m_Wrapper.m_PlayerController_Rotate;
+        public InputAction @Shoot => m_Wrapper.m_PlayerController_Shoot;
+        public InputAction @RotateTouch => m_Wrapper.m_PlayerController_RotateTouch;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -320,12 +364,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Rotation.started += instance.OnRotation;
-            @Rotation.performed += instance.OnRotation;
-            @Rotation.canceled += instance.OnRotation;
-            @Testing.started += instance.OnTesting;
-            @Testing.performed += instance.OnTesting;
-            @Testing.canceled += instance.OnTesting;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
+            @RotateTouch.started += instance.OnRotateTouch;
+            @RotateTouch.performed += instance.OnRotateTouch;
+            @RotateTouch.canceled += instance.OnRotateTouch;
         }
 
         private void UnregisterCallbacks(IPlayerControllerActions instance)
@@ -333,12 +380,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Rotation.started -= instance.OnRotation;
-            @Rotation.performed -= instance.OnRotation;
-            @Rotation.canceled -= instance.OnRotation;
-            @Testing.started -= instance.OnTesting;
-            @Testing.performed -= instance.OnTesting;
-            @Testing.canceled -= instance.OnTesting;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
+            @RotateTouch.started -= instance.OnRotateTouch;
+            @RotateTouch.performed -= instance.OnRotateTouch;
+            @RotateTouch.canceled -= instance.OnRotateTouch;
         }
 
         public void RemoveCallbacks(IPlayerControllerActions instance)
@@ -356,19 +406,20 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public PlayerControllerActions @PlayerController => new PlayerControllerActions(this);
-    private int m_NewPlayerSchemeIndex = -1;
-    public InputControlScheme NewPlayerScheme
+    private int m_MyControlsSchemeIndex = -1;
+    public InputControlScheme MyControlsScheme
     {
         get
         {
-            if (m_NewPlayerSchemeIndex == -1) m_NewPlayerSchemeIndex = asset.FindControlSchemeIndex("NewPlayer");
-            return asset.controlSchemes[m_NewPlayerSchemeIndex];
+            if (m_MyControlsSchemeIndex == -1) m_MyControlsSchemeIndex = asset.FindControlSchemeIndex("MyControls");
+            return asset.controlSchemes[m_MyControlsSchemeIndex];
         }
     }
     public interface IPlayerControllerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnRotation(InputAction.CallbackContext context);
-        void OnTesting(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnRotateTouch(InputAction.CallbackContext context);
     }
 }
